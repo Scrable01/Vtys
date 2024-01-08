@@ -109,9 +109,16 @@
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-		// Verileri çek ve görüntüle fonksiyonunu çağır
-		aktar();
-		
+		//  Proxy, aktar fonksiyonunu sarmalayarak bu fonksiyonun çağrılmasını kontrol eder.
+		const proxyAktar = new Proxy(aktar, {
+			apply: function(target, thisArg, argumentsList) {
+				// Fonksiyonu çağır
+				const result = Reflect.apply(target, thisArg, argumentsList);
+				return result;
+			}
+		});
+
+		proxyAktar();
 	});
 
 	function aktar() {
@@ -151,8 +158,6 @@
 			})
 			.catch(error => console.error('Hata:', error));
 	}
-
-	
 </script>
 
 </body>

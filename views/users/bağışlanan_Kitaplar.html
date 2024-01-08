@@ -124,7 +124,7 @@ function myFunction() {
 						<h5><a class="col_white" href="#" onclick="getdonateDetails('${item._id}')">${item.bookName.toUpperCase()}</a></h5>
 						<p class="mb-2 short-text">${item.bookType}</p>
 						<p class="mb-2 short-text">${item.author}</p>
-						<p class="mb-2 short-text">${item.description}</p>
+						<p class="mb-2 short-text"title="${item.description}">${item.description}</p>
 					</div>
 				</div>
 			`;
@@ -142,6 +142,13 @@ function myFunction() {
 </body>
 <head>
 	<style>
+		.short-text2 {
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+
 		
 body{
 font-family: 'Rajdhani', sans-serif;
